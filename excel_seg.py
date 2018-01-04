@@ -28,7 +28,7 @@ for branch in branch_list:
 
 	for x in range(len(all_students)):
 		cur_rec = all_students[x]
-		if cur_rec[1] == branch:
+		if cur_rec[1] == branch:  # change the value to any parameter column no. you want to match
 			for y in range(len(cur_rec)):
 				arow.append(cur_rec[y])
 
@@ -41,6 +41,11 @@ for branch in branch_list:
 	for x in range(len(filter_list)):
 		cur_stu = filter_list[x]
 		for y in range(len(cur_stu)):
-			ws.write(x,y,cur_stu[y])
+			ws.write(x+2,y,cur_stu[y])
+
+	for z in range(len(filter_list[0])):  # write title of the fields
+		ws.write(0,z, all_students[0][z])
+
+
 
 	wb.save('{} - {} records.xls'.format(branch,len(filter_list)))
